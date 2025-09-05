@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Quiet Study Space</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #eee;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .testimonial {
+            background-color: #eaf2f8;
+            border-left: 4px solid #4a90e2;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-style: italic;
+        }
+        .call-to-action {
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        /* Button styles */
+        .btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px 0;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #357ABD;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.5); 
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto; 
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            width: 100%;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+        }
+        .availability-status {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Community Quiet Study Space</h1>
+        <p>A Place to Focus and Succeed</p>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About the Project</h2>
+            <p>Welcome to our Community Quiet Study Space initiative! We understand that many students face challenges studying at home due to noisy and distracting environments. Our goal is to provide a peaceful, quiet, and supportive place where students can focus on their studies and improve their academic performance.</p>
+        </section>
+
+        <section id="why">
+            <h2>Why This Project Matters</h2>
+            <ul>
+                <li>Many students live in crowded homes with distractions like chores, siblings, and noise.</li>
+                <li>Lack of a quiet study area affects concentration, motivation, and grades.</li>
+                <li>Our study space offers a calm environment to help students reach their full potential.</li>
+            </ul>
+        </section>
+
+        <section id="offer">
+            <h2>What We Offer</h2>
+            <ul>
+                <li>A quiet, well-lit room with desks and chairs.</li>
+                <li>Free access during after-school hours and weekends.</li>
+                <li>Volunteer tutors available to assist with homework and questions.</li>
+                <li>Rules to maintain a respectful and focused atmosphere.</li>
+            </ul>
+        </section>
+
+        <section id="who">
+            <h2>Who Can Use the Study Space?</h2>
+            <ul>
+                <li>Students of all ages from our community.</li>
+                <li>Parents and teachers are welcome to support and encourage students.</li>
+                <li>Volunteers interested in helping supervise or tutor.</li>
+            </ul>
+        </section>
+
+        <section id="reservation">
+            <h2>Check Table Availability & Reserve</h2>
+            <button class="btn" id="checkAvailabilityBtn">Check Available Tables</button>
+            <button class="btn" id="reserveTableBtn">Reserve a Table</button>
+        </section>
+
+        <section id="location">
+            <h2>Location and Hours</h2>
+            <p><strong>Location:</strong> [Community Center / Church Hall / School Room]</p>
+            <p><strong>Hours:</strong> Monday to Friday, 3 PM – 7 PM; Saturday, 9 AM – 1 PM</p>
+        </section>
+
+        <section id="contact" class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:communitystudyspace@example.com">communitystudyspace@example.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+            <p>Facebook: <a href="https://facebook.com/communitystudyspace" target="_blank" rel="noopener">facebook.com/communitystudyspace</a></p>
+            <p>Instagram: <a href="https://instagram.com/communitystudyspace" target="_blank" rel="noopener">@communitystudyspace</a></p>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial">"This study space helped me focus better and improve my grades!" – Student A</div>
+            <div class="testimonial">"A great place for my kids to study without distractions." – Parent B</div>
+        </section>
+
+        <section class="call-to-action">
+            Join us in making education accessible and effective for all students. Together, we can build a brighter future!
+        </section>
+    </main>
+
+    <!-- Modal for Availability -->
+    <div id="availabilityModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAvailability">&times;</span>
+            <h3>Available Tables</h3>
+            <p id="availabilityStatus" class="availability-status">Loading availability...</p>
+            <button class="btn" id="closeAvailabilityBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal for Reservation -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeReservation">&times;</span>
+            <h3>Reserve a Table</h3>
+            <form id="reservationForm">
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" name="studentName" required />
+
+                <label for="studentEmail">Email:</label>
+                <input type="email" id="studentEmail" name="studentEmail" required />
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required />
+
+                <label for="timeSlot">Time Slot:</label>
+                <select id="timeSlot" name="timeSlot" required>
+                    <option value="">Select a time slot</option>
+                    <option value="3-4pm">3 PM - 4 PM</option>
+                    <option value="4-5pm">4 PM - 5 PM</option>
+                    <option value="5-6pm">5 PM - 6 PM</option>
+                    <option value="6-7pm">6 PM - 7 PM</option>
+                    <option value="9-10am">9 AM - 10 AM (Saturday)</option>
+                    <option value="10-11am">10 AM - 11 AM (Saturday)</option>
+                    <option value="11-12pm">11 AM - 12 PM (Saturday)</option>
+                    <option value="12-1pm">12 PM - 1 PM (Saturday)</option>
+                </select>
+
+                <input type="submit" value="Submit Reservation" />
+            </form>
+            <p id="reservationMessage" style="margin-top: 10px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Community Quiet Study Space. All rights reserved.
+    </footer>
+
+    <script>
+        // Simulated data for available tables (for demo purposes)
+        const totalTables = 10;
+        // Example: reservations stored in-memory (in real app, use backend)
+        let reservations = [
+            // Sample reservation: { date: '2024-06-10', timeSlot: '3-4pm' }
+        ];
+
+        // Elements
+        const availabilityModal = document.getElementById('availabilityModal');
+        const reservationModal = document.getElementById('reservationModal');
+        const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
+        const reserveTableBtn = document.getElementById('reserveTableBtn');
+        const closeAvailability = document.getElementById('closeAvailability');
+        const closeAvailabilityBtn = document.getElementById('closeAvailabilityBtn');
+        const closeReservation = document.getElementById('closeReservation');
+        const reservationForm = document.getElementById('reservationForm');
+        const availabilityStatus = document.getElementById('availabilityStatus');
+        const reservationMessage = document.getElementById('reservationMessage');
+
+        // Open availability modal and show availability for today and next time slot
+        checkAvailabilityBtn.addEventListener('click', () => {
+            availabilityStatus.textContent = 'Loading availability...';
+            availabilityModal.style.display = 'block';
+
+            // For demo: show availability for today and next time slot (3-4pm)
+            const today = new Date().toISOString().split('T')[0];
+            const timeSlot = '3-4pm';
+
+            // Count reservations for that date and time slot
+            const reservedCount = reservations.filter(r => r.date === today && r.timeSlot === timeSlot).length;
+            const availableTables = totalTables - reservedCount;
+
+            availabilityStatus.textContent = `For ${today} at ${timeSlot}, available tables: ${availableTables} out of ${totalTables}.`;
+        });
+
+        // Open reservation modal
+        reserveTableBtn.addEventListener('click', () => {
+            reservationMessage.textContent = '';
+            reservationForm.reset();
+            reservationModal.style.display = 'block';
+        });
+
+        // Close modals
+        closeAvailability.addEventListener('click', () => {
+            availabilityModal.style.display = 'none';
+        });
+        closeAvailabilityBtn.addEventListener('click', () => {
+            availabilityModal.style.display = 'none';
+        });
+        closeReservation.addEventListener('click', () => {
+            reservationModal.style.display = 'none';
+        });
+
+        // Close modals if clicking outside modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === availabilityModal) {
+                availabilityModal.style.display = 'none';
+            }
+            if (event.target === reservationModal) {
+                reservationModal.style.display = 'none';
+            }
+        });
+
+        // Handle reservation form submission
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = reservationForm.studentName.value.trim();
+            const email = reservationForm.studentEmail.value.trim();
+            const date = reservationForm.date.value;
+            const timeSlot = reservationForm.timeSlot.value;
+
+            if (!name || !email || !date || !timeSlot) {
+                reservationMessage.style.color = 'red';
+                reservationMessage.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            // Check if tables are available for selected date/time
+            const reservedCount = reservations.filter(r => r.date === date && r.timeSlot === timeSlot).length;
+            if (reservedCount >= totalTables) {
+                reservationMessage.style.color = 'red';
+                reservationMessage.textContent = 'Sorry, no tables are available for the selected date and time slot.';
+                return;
+            }
+
+            // Save reservation (in-memory)
+            reservations.push({ name, email, date, timeSlot });
+
+            reservationMessage.style.color = 'green';
+            reservationMessage.textContent = `Thank you, ${name}! Your table has been reserved for ${date} at ${timeSlot}.`;
+
+            // Optionally, reset form after successful reservation
+            reservationForm.reset();
+        });
+    </script>
+</body>
+              </html>
