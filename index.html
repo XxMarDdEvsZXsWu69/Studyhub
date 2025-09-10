@@ -64,7 +64,7 @@
       <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-white">Available Service</h1>
       
       <!-- Transportation Options Grid -->
-      <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8 max-w-2xl mx-auto">
+      <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8 max-w-2xl mx-auto fade-in-grid">
         
         <!-- MC Taxi Card -->
         <div class="ride-card grid-item bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-4 md:p-6 cursor-pointer transform transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:z-10" onclick="selectRide('mc-taxi')" data-index="0">
@@ -205,36 +205,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function selectRide(rideType) {
       const ride = rides[rideType];
-      const modal = document.getElementById('bookingModal');
-      const modalContent = modal.querySelector('.modal-content');
       
-      // Update modal content
-      document.getElementById('selectedIcon').className = `w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${ride.color}`;
-      document.getElementById('selectedIcon').innerHTML = `<i class="${ride.icon} text-2xl ${ride.textColor}"></i>`;
-      document.getElementById('selectedTitle').textContent = ride.title;
-      document.getElementById('selectedDescription').textContent = ride.description;
-      
-      // Enhanced modal entrance animation
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      modal.style.backdropFilter = 'blur(0px)';
-      modalContent.style.transform = 'scale(0.7) translateY(50px) rotateX(15deg)';
-      modalContent.style.opacity = '0';
-      modalContent.style.filter = 'blur(10px)';
-      
-      // Animate backdrop blur
-      setTimeout(() => {
-        modal.style.transition = 'backdrop-filter 0.4s ease';
-        modal.style.backdropFilter = 'blur(8px)';
-      }, 10);
-      
-      // Animate modal content with bounce effect
-      setTimeout(() => {
-        modalContent.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        modalContent.style.transform = 'scale(1) translateY(0) rotateX(0deg)';
-        modalContent.style.opacity = '1';
-        modalContent.style.filter = 'blur(0px)';
-      }, 50);
+      // Show under development message
+      alert('🚧 Under Development 🚧\n\nThis feature is currently under development.\nPlease check back soon!');
     }
 
     function closeModal() {
