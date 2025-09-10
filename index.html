@@ -112,30 +112,6 @@
       </div>
     </div>
 
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 modal-overlay">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 modal-content">
-        <div class="text-center">
-          <div id="selectedIcon" class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"></div>
-          <h3 id="selectedTitle" class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2"></h3>
-          <p id="selectedDescription" class="text-gray-600 dark:text-gray-300 mb-6"></p>
-          
-          <div class="space-y-4">
-            <input type="text" placeholder="Pickup Location" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
-            <input type="text" placeholder="Destination" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
-            
-            <div class="flex gap-3">
-              <button onclick="bookRide()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                Book Now
-              </button>
-              <button onclick="closeModal()" class="flex-1 bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-200 font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
   <footer class="text-center py-2 text-gray-600 dark:text-gray-400 text-sm fixed bottom-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur dark:border-gray-700">
     ©2025-2026 RideOn | All rights reserved.
@@ -210,39 +186,6 @@ document.addEventListener("DOMContentLoaded", function() {
       alert('🚧 Under Development 🚧\n\nThis feature is currently under development.\nPlease check back soon!');
     }
 
-    function closeModal() {
-      const modal = document.getElementById('bookingModal');
-      const modalContent = modal.querySelector('.modal-content');
-      
-      // Enhanced modal exit animation
-      modalContent.style.transition = 'all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)';
-      modalContent.style.transform = 'scale(0.8) translateY(30px) rotateX(-10deg)';
-      modalContent.style.opacity = '0';
-      modalContent.style.filter = 'blur(5px)';
-      
-      // Fade out backdrop
-      modal.style.transition = 'backdrop-filter 0.4s ease';
-      modal.style.backdropFilter = 'blur(0px)';
-      
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }, 400);
-    }
-
-    function bookRide() {
-      // Simple booking confirmation
-      alert('Ride booked successfully! A driver will be assigned shortly.');
-      closeModal();
-    }
-
-    // Close modal when clicking outside
-    document.addEventListener('click', function(event) {
-      const modal = document.getElementById('bookingModal');
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
   </script>
   <style>
     /* Enhanced grid layout */
@@ -386,7 +329,22 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     
-    /* Smooth entrance animations */
+    /* Smooth fade animations for grid */
+    .fade-in-grid {
+      animation: fadeInGrid 1.2s ease-out forwards;
+    }
+    
+    @keyframes fadeInGrid {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     .fade-in-up {
       opacity: 0;
       transform: translateY(30px);
