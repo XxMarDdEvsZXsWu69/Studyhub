@@ -59,7 +59,7 @@
         <h1 class="text-xl font-bold mb-3 text-black dark:text-white text-animate">Let's go ride!</h1>
         <p class="text-sm text-gray-600 dark:text-gray-400 text-animate">Your safety is our priority.</p>
         <br>
-        <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto" onclick="goToDashboard()">
+        <button class="dashboard-btn bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto transform transition-all duration-300 hover:scale-105" onclick="goToDashboard()">
           <i class="fas fa-tachometer-alt text-lg"></i>
           Go To Dashboard
         </button>
@@ -136,8 +136,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       }
 
-      // Synchronized grid entrance animations - all at the same time
+      // Synchronized animations - all 4 grid items + dashboard button at the same time
       const gridItems = document.querySelectorAll('.grid-item');
+      const dashboardBtn = document.querySelector('.dashboard-btn');
+      
+      // Animate grid items
       gridItems.forEach((item, index) => {
         item.style.opacity = '0';
         item.style.transform = 'scale(0.8) translateY(40px) rotateX(15deg)';
@@ -150,6 +153,20 @@ document.addEventListener("DOMContentLoaded", function() {
           item.style.filter = 'blur(0px)';
         }, 0);
       });
+      
+      // Animate dashboard button at the same time
+      if (dashboardBtn) {
+        dashboardBtn.style.opacity = '0';
+        dashboardBtn.style.transform = 'scale(0.8) translateY(40px) rotateX(15deg)';
+        dashboardBtn.style.filter = 'blur(5px)';
+        
+        setTimeout(() => {
+          dashboardBtn.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          dashboardBtn.style.opacity = '1';
+          dashboardBtn.style.transform = 'scale(1) translateY(0) rotateX(0deg)';
+          dashboardBtn.style.filter = 'blur(0px)';
+        }, 0);
+      }
     });
 
     // Ride data
