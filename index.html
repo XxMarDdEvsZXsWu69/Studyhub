@@ -118,77 +118,31 @@
     </div>
     
     <!-- Feedback Section -->
+    <!-- Feedback Section -->
     <div class="w-full max-w-4xl mt-16">
-      <h2 class="text-2xl font-bold text-center mb-8 text-black dark:text-white">Customer Feedback</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Feedback Card 1 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-              S
-            </div>
-            <div class="ml-3">
-              <h3 class="font-semibold text-gray-900 dark:text-white">Sarah M.</h3>
-              <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">
-            "Amazing service! The MC Taxi was so convenient and the driver was very professional. Highly recommend!"
-          </p>
-        </div>
-        
-        <!-- Feedback Card 2 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-              J
-            </div>
-            <div class="ml-3">
-              <h3 class="font-semibold text-gray-900 dark:text-white">John D.</h3>
-              <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">
-            "Fast delivery service! My package arrived on time and in perfect condition. Will use again!"
-          </p>
-        </div>
-        
-        <!-- Feedback Card 3 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-              M
-            </div>
-            <div class="ml-3">
-              <h3 class="font-semibold text-gray-900 dark:text-white">Maria R.</h3>
-              <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">
-            "Great app interface and easy booking process. The Super Taxi service exceeded my expectations!"
-          </p>
-        </div>
+      <h2 class="text-2xl font-bold text-center mb-8 text-black dark:text-white">Feedback Here!</h2>
+      <!-- Feedback Form -->
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 mb-6">
+        <textarea 
+          id="feedback-input" 
+          placeholder="put your feedback here"
+          class="w-full h-32 p-4 border rounded-xl resize-none focus:ring-2 focus:ring-purple-500 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        ></textarea>
+        <!-- Submit Feedback Button -->
+      <div class="text-center mb-6">
+        <button 
+          class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105"
+          onclick="submitFeedback()">
+          Submit Your Feedback
+        </button>
       </div>
-    </div>
+      </div>
 
+      <!-- Feedback Container -->
+      <div id="feedback-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+<br>
+  <br>
   </main>
   <footer class="text-center py-2 text-gray-600 dark:text-gray-400 text-sm fixed bottom-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur dark:border-gray-700">
     ©2025-2026 RideOn | All rights reserved.
@@ -196,6 +150,10 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!--<script src="/script.js"></script>-->
   <script>
+    function submitFeedback() {
+        alert("🚧 Feedback submission form is under development 🚧");
+    }
+    
 document.addEventListener("DOMContentLoaded", function() {
       const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (isDarkMode) {
