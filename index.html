@@ -55,123 +55,18 @@
   </header>
   <main class="flex flex-col items-center pt-4 px-4 container mx-auto flex-1">
     <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 w-full max-w-xl text-center">
-      <div class="relative w-full overflow-visible"> 
-        <mark class="text-[7px] text-gray-600 dark:text-gray-300 mr-[230px] bg-gray-100 dark:bg-gray-700 text-left rounded px-1">Powered by 69</mark>        
+      <div class="relative w-full overflow-visible">         
       </div>
       <div id="fb-bot-section" class="transition-opacity duration-300">
         <br>
-        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Facebook Autobot</h1>
-        <p class="text-sm text-gray-600 dark:text-gray-400">We respect your privacy and We will not share your personal information with third parties without your consent.</p>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Let's go ride!</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Your safety is our priority.</p>
         <br>
-        <p class="text-xs text-green-600 dark:text-green-400">Active Session: <span id="onlineUsers">0</span></p>
-        <br>
-        <label for="json-data" class="block text-xs font-small mr-[215px] text-gray-700 dark:text-gray-300 mb-1">Appstate:</label>
-        <form id="cookie-form">
-          <textarea id="json-data" class="w-full h-25 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 resize-none mb-2 text-xs overflow-y-auto" placeholder='{
-    "key": "datr",
-    "value": "IxwFaMbXvGr6As71GZImtlAB",
-    "domain": "facebook.com",
-    "path": "/",
-    "hostOnly": false,
-    "creation": "2025-05-03T14:41:25.573Z",
-    "lastAccessed": "2025-05-03T14:41:25.573Z"
-}'></textarea>
-        </form>
-        <div id="prefixOfCommands">
-          <label for="inputOfPrefix" class="block text-xs font-small mr-[190px] text-gray-700 dark:text-gray-300 mb-1">Prefix: (Optional)</label>
-          <input type="text" id="inputOfPrefix" class="w-full h-9 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 mb-2 text-xs">
-        </div>
-        <div id="adminOfCommands">
-          <label for="inputOfAdmin" class="block text-xs font-small mr-[180px] text-gray-700 dark:text-gray-300 mb-1">Admin: (Optional)</label>
-          <input type="text" id="inputOfAdmin" class="w-full h-9 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 mb-2 text-xs">
-        </div>
-        <button id="submitButton" class="bg-black dark:bg-white text-white dark:text-black w-full py-1.5 rounded hover:bg-violet-800 dark:hover:bg-gray-200 transition">
-          <i class="fas fa-sign-in-alt mr-1"></i> Submit
-        </button>
-        <div class="flex justify-between gap-2 mt-2">
-          <button onclick="showLoginSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-shield-alt mr-1"></i> FB-GUARD
-          </button>
-          <button onclick="showTutorialSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-book mr-1"></i> TUTORIAL
-          </button>
-        </div>
-        <div id="spinner" class="hidden mt-2 animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-primary dark:border-gray-400 mx-auto"></div>
-        <p id="loginStatus" class="mt-1 text-red-500 dark:text-red-400 font-medium text-xs"></p>
-      </div>
-
-      <div id="login-section" class="hidden transition-opacity duration-300">
-        <br>
-        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Facebook Guard</h1>
-        <p class="text-sm text-gray-600 dark:text-gray-400">We respect your privacy and We will not share your personal information with third parties without your consent.</p>
-        <br>
-        <textarea id="appStateInput" class="w-full h-28 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-violet-400 resize-none mb-2 text-xs" placeholder='{
-              "key": "datr",
-              "value": "IxwFaMbXvGr6As71GZImtlAB",
-              "domain": "facebook.com",
-              "path": "/",
-              "hostOnly": false,
-              "creation": "2025-05-03T14:41:25.573Z",
-              "lastAccessed": "2025-05-03T14:41:25.573Z"
-          }'></textarea>
-        <button onclick="submitAppState()" class="bg-black dark:bg-white text-white dark:text-black w-full py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-          <i class="fas fa-sign-in-alt mr-1"></i> Login
-        </button>
-        <div class="flex justify-between gap-2 mt-2">
-          <button onclick="showFbBotSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-robot mr-1"></i> FB-BOT
-          </button>
-          <button onclick="showTutorialSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-book mr-1"></i> TUTORIAL
-          </button>
-        </div>
-        <div id="spinner" class="hidden mt-2 animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-primary dark:border-gray-400 mx-auto"></div>
-        <p id="loginStatus" class="mt-1 text-red-500 dark:text-red-400 font-medium text-xs"></p>
-      </div>
-
-      <div id="tutorial-section" class="hidden transition-opacity duration-300">
-        <br>
-        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">How to get Appstate?</h1>
-        <br>
-        <div class="min-h-fit max-h-96 pr-2">
-        <ol class="text-xs text-gray-600 dark:text-gray-400 list-decimal pl-5 text-left">
-          <li>First download <a href="https://mrepol742.github.io/webvium/download/" target="_blank" class="text-green-500 hover:text-green-600">WEBVIUM</a>.</li>
-          <li>Open the Webvium app and search for Facebook in the search bar, then log in to the account you want to use as a bot (it's better to use a dummy account for this).</li>
-          <li>Once you log in to the account you want to use as a bot, click the three dots at the top side, then find "DevTools," and click on "Cookie Manager," then copy your "Appstate."</li>
-          <li>After copying your Appstate, go back to the link, then paste your Appstate into the Appstate container, and also enter the Facebook ID for admin (this is optional) and a prefix (also optional).</li>
-          <li>Then you have your bot. ☺️</li>
-        </ol>
-        <br>
-        <p class="text-xs text-red-500 dark:text-red-400 text-left">IMPORTANT NOTE:</p>
-          <p class="text-xs text-gray-600 dark:text-gray-400 text-left">There is a possibility that the account you use as a bot may get locked or suspended, and I don't have responsibility for that, but not all accounts used as bots get locked or suspended. It's risky, but it's helpful for our academics.</p>
-        <br>
-        <div class="flex justify-center gap-2 mt-2">
-          <button onclick="hideTutorialSection(); showFbBotSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-robot mr-1"></i> FB-BOT
-          </button>
-          <button onclick="hideTutorialSection(); showLoginSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
-            <i class="fas fa-shield-alt mr-1"></i> FB-GUARD
-          </button>
-        </div>
-      </div>
-
-      <div id="guard-controls" class="hidden mt-4">
-        <div class="flex justify-center gap-2 mb-2">
-          <button onclick="setGuard(true)" class="bg-white dark:bg-black text-black dark:text-white px-4 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-900 transition font-medium border border-gray-200 dark:border-gray-700">
-            <i class="fas fa-shield-alt mr-1"></i> ON
-          </button>
-          <button onclick="setGuard(false)" class="bg-white dark:bg-black text-black dark:text-white px-4 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-900 transition font-medium border border-gray-200 dark:border-gray-700">
-            <i class="fas fa-times mr-1"></i> OFF
-          </button>
-        </div>
-        <button onclick="logout()" class="text-gray-600 dark:text-gray-400 underline text-xs hover:text-gray-800 dark:hover:text-gray-200 mt-2">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
       </div>
     </div>
   </main>
   <footer class="text-center py-2 text-gray-600 dark:text-gray-400 text-sm fixed bottom-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur dark:border-gray-700">
-    ©2025 Markdevs69 | All rights reserved.
+    ©2025-2026 RideOn | All rights reserved.
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!--<script src="/script.js"></script>-->
