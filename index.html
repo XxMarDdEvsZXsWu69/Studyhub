@@ -54,53 +54,59 @@
     </button>
   </header>
   <main class="flex flex-col items-center pt-8 px-4 container mx-auto flex-1">
+    <div id="fb-bot-section" class="transition-opacity duration-300">
+        <br>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Let's go ride!</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Your safety is our priority.</p>
+        <br>
+    </div>
     <div class="w-full max-w-4xl">
       <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-white">Choose Your Ride</h1>
       
       <!-- Transportation Options Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8 max-w-2xl mx-auto">
         
         <!-- MC Taxi Card -->
-        <div class="ride-card bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="selectRide('mc-taxi')">
+        <div class="ride-card grid-item bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-4 md:p-6 cursor-pointer transform transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:z-10" onclick="selectRide('mc-taxi')" data-index="0">
           <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 bg-blue-300 dark:bg-blue-600 rounded-full flex items-center justify-center mb-4 icon-animate">
-              <i class="fas fa-motorcycle text-3xl text-blue-800 dark:text-blue-200"></i>
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-300 dark:bg-blue-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
+              <i class="fas fa-motorcycle text-2xl md:text-3xl text-blue-800 dark:text-blue-200"></i>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">MC Taxi</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Beat the traffic on a motorcycle</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">MC Taxi</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Beat the traffic</p>
           </div>
         </div>
 
         <!-- Car Card -->
-        <div class="ride-card bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 rounded-2xl p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="selectRide('car')">
+        <div class="ride-card grid-item bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 rounded-2xl p-4 md:p-6 cursor-pointer transform transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:z-10" onclick="selectRide('car')" data-index="1">
           <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 bg-green-300 dark:bg-green-600 rounded-full flex items-center justify-center mb-4 icon-animate">
-              <i class="fas fa-car text-3xl text-green-800 dark:text-green-200"></i>
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-green-300 dark:bg-green-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
+              <i class="fas fa-car text-2xl md:text-3xl text-green-800 dark:text-green-200"></i>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Car</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Travel in style and comfort via private car</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">Car</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Comfort & style</p>
           </div>
         </div>
 
         <!-- Taxi Cab Card -->
-        <div class="ride-card bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 rounded-2xl p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="selectRide('taxi-cab')">
+        <div class="ride-card grid-item bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 rounded-2xl p-4 md:p-6 cursor-pointer transform transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:z-10" onclick="selectRide('taxi-cab')" data-index="2">
           <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 bg-yellow-300 dark:bg-yellow-600 rounded-full flex items-center justify-center mb-4 icon-animate">
-              <i class="fas fa-taxi text-3xl text-yellow-800 dark:text-yellow-200"></i>
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-300 dark:bg-yellow-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
+              <i class="fas fa-taxi text-2xl md:text-3xl text-yellow-800 dark:text-yellow-200"></i>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Taxi Cab</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Hassle-free metered taxi cab rides</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">Taxi Cab</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Hassle-free rides</p>
           </div>
         </div>
 
         <!-- Super Taxi Card -->
-        <div class="ride-card bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 rounded-2xl p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="selectRide('super-taxi')">
+        <div class="ride-card grid-item bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 rounded-2xl p-4 md:p-6 cursor-pointer transform transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:z-10" onclick="selectRide('super-taxi')" data-index="3">
           <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 bg-purple-300 dark:bg-purple-600 rounded-full flex items-center justify-center mb-4 icon-animate">
-              <i class="fas fa-car-side text-3xl text-purple-800 dark:text-purple-200"></i>
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-purple-300 dark:bg-purple-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
+              <i class="fas fa-car-side text-2xl md:text-3xl text-purple-800 dark:text-purple-200"></i>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Super Taxi</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Next-gen taxi service at regular metered rates</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">Super Taxi</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Next-gen service</p>
           </div>
         </div>
       </div>
