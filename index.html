@@ -436,6 +436,22 @@ document.addEventListener("DOMContentLoaded", function() {
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    
+    /* Dashboard button fade animation */
+    .dashboard-btn {
+      animation: fadeInButton 1.5s ease-out forwards;
+    }
+    
+    @keyframes fadeInButton {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
   </body>
 </html>
