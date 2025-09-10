@@ -1,371 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community Quiet Study Space</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+  <meta charset="UTF-8">
+  <title>Markdevstool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="69script.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6d28d9',
+            secondary: '#ec4899',
+            accent: '#10b981'
+          }
         }
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-        }
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 15px 10px;
-            background-color: #eee;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        .contact-info p {
-            margin: 5px 0;
-        }
-        .testimonial {
-            background-color: #eaf2f8;
-            border-left: 4px solid #4a90e2;
-            margin: 15px 0;
-            padding: 10px 15px;
-            font-style: italic;
-        }
-        .call-to-action {
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            margin-top: 30px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-        /* Button styles */
-        .btn {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            margin: 10px 0;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-        }
-        .btn:hover {
-            background-color: #357ABD;
-        }
-        /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; 
-            z-index: 1000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.5); 
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto; 
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 15px;
-            top: 10px;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input[type="text"],
-        input[type="email"],
-        select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        input[type="submit"] {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 12px;
-            margin-top: 15px;
-            width: 100%;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #357ABD;
-        }
-        .availability-status {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
+      }
+    }
+  </script>
+  <script src="/script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6fe05.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.imgur.com/Hi9CX9q.jpeg" type="image/jpeg">
 </head>
-<body>
-    <header>
-        <h1>Study Hub</h1>
-        <p>A Place to Focus on their Studies</p>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About the Project</h2>
-            <p>Welcome to our Community Quiet Study Space initiative! We understand that many students face challenges studying at home due to noisy and distracting environments. Our goal is to provide a peaceful, quiet, and supportive place where students can focus on their studies and improve their academic performance.</p>
-        </section>
-
-        <section id="why">
-            <h2>Why This Project Matters</h2>
-            <ul>
-                <li>Many students live in crowded homes with distractions like chores, siblings, and noise.</li>
-                <li>Lack of a quiet study area affects concentration, motivation, and grades.</li>
-                <li>Our study space offers a calm environment to help students reach their full potential.</li>
-            </ul>
-        </section>
-
-        <section id="offer">
-            <h2>What We Offer</h2>
-            <ul>
-                <li>A quiet, well-lit room with desks and chairs.</li>
-                <li>Free access during after-school hours and weekends.</li>
-                <li>Volunteer tutors available to assist with homework and questions.</li>
-                <li>Rules to maintain a respectful and focused atmosphere.</li>
-            </ul>
-        </section>
-
-        <section id="who">
-            <h2>Who Can Use the Study Space?</h2>
-            <ul>
-                <li>Students of all ages from our community.</li>
-                <li>Parents and teachers are welcome to support and encourage students.</li>
-                <li>Volunteers interested in helping supervise or tutor.</li>
-            </ul>
-        </section>
-
-        <section id="reservation">
-            <h2>Check Table Availability & Reserve</h2>
-            <button class="btn" id="checkAvailabilityBtn">Check Available Tables</button>
-            <button class="btn" id="reserveTableBtn">Reserve a Table</button>
-        </section>
-
-        <section id="location">
-            <h2>Location and Hours</h2>
-            <p><strong>Location:</strong> [Community Center / Church Hall / School Room]</p>
-            <p><strong>Hours:</strong> Monday to Friday, 3 PM – 7 PM; Saturday, 9 AM – 1 PM</p>
-        </section>
-
-        <section id="contact" class="contact-info">
-            <h2>Contact Us</h2>
-            <p>Email: <a href="mailto:communitystudyspace@example.com">studyhub@gmail.com</a></p>
-            <p>Phone: <a href="tel:+1234567890">09700879022</a></p>
-            <p>Facebook: <a href="https://facebook.com/communitystudyspace" target="_blank" rel="noopener">facebook.com/communitystudyspace</a></p>
-            <p>Instagram: <a href="https://instagram.com/communitystudyspace" target="_blank" rel="noopener">@communitystudyspace</a></p>
-        </section>
-
-        <section id="testimonials">
-            <h2>Testimonials</h2>
-            <div class="testimonial">"This study space helped me focus better and improve my grades!"</div>
-            <div class="testimonial">"A great place for students to study without distractions."</div>
-        </section>
-
-        <section class="call-to-action">
-            Join us in making education accessible and effective for all students. Together, we can build a brighter future!
-        </section>
-    </main>
-
-    <!-- Modal for Availability -->
-    <div id="availabilityModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeAvailability">&times;</span>
-            <h3>Available Tables</h3>
-            <p id="availabilityStatus" class="availability-status">Loading availability...</p>
-            <button class="btn" id="closeAvailabilityBtn">Close</button>
-        </div>
+<body class="min-h-screen flex flex-col overflow-y-auto text-sm font-semibold font-['Poppins'] bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <header class="flex justify-between items-center p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+    <div class="flex items-center gap-5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50" class="text-black dark:text-white fill-current">
+        <path d="M 25 2 C 15.058594 2 7 4.6875 7 8 L 7 25 C 7 30.082031 12.417969 44.082031 25 47 C 37.582031 44.082031 43 30.082031 43 25 L 43 8 C 43 4.6875 34.941406 2 25 2 Z M 25 4 C 35.5 4 41 6.972656 41 8 L 41 25 C 41 29.136719 36.667969 40.523438 27 44.296875 L 27 38 L 23 38 L 23 44.296875 C 13.332031 40.523438 9 29.136719 9 25 L 9 8 C 9 6.972656 14.5 4 25 4 Z M 17 11 C 15.003906 11 12.855469 11.878906 11 15 C 12.953125 13.640625 14.613281 13 16 13 C 18.6875 13 20.027344 16.148438 20.4375 16.5625 C 21.023438 17.148438 21.972656 17.148438 22.5625 16.5625 C 23.148438 15.976563 23.148438 15.027344 22.5625 14.4375 C 22.195313 14.074219 20.4375 11 17 11 Z M 33 11 C 29.5625 11 27.804688 14.074219 27.4375 14.4375 C 26.851563 15.027344 26.851563 15.976563 27.4375 16.5625 C 28.027344 17.148438 28.976563 17.148438 29.5625 16.5625 C 29.972656 16.148438 31.3125 13 34 13 C 35.386719 13 37.046875 13.640625 39 15 C 37.144531 11.878906 34.996094 11 33 11 Z M 16 17 C 14.359375 17 12.917969 17.59375 12 18.5 C 12.917969 19.40625 14.359375 20 16 20 C 17.640625 20 19.082031 19.40625 20 18.5 C 19.082031 17.59375 17.640625 17 16 17 Z M 34 17 C 32.359375 17 30.917969 17.59375 30 18.5 C 30.917969 19.40625 32.359375 20 34 20 C 35.640625 20 37.082031 19.40625 38 18.5 C 37.082031 17.59375 35.640625 17 34 17 Z M 11 26 L 16 34 L 23 34 L 25 32 L 27 34 L 34 34 L 39 26 L 33 31 L 29 31 L 26 28 L 24 28 L 21 31 L 17 31 Z"></path>
+      </svg>
+     <center><span class="text-black dark:text-white font-bold text-xl tracking-wider uppercase text-center w-full block">MARKDEVS</span></center>
+      <mark class="absolute right-[145px] text-[16px] text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 text-left rounded px-1">UI</mark>
     </div>
-
-    <!-- Modal for Reservation -->
-    <div id="reservationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeReservation">&times;</span>
-            <h3>Reserve a Table</h3>
-            <form id="reservationForm">
-                <label for="studentName">Name:</label>
-                <input type="text" id="studentName" name="studentName" required />
-
-                <label for="studentEmail">Email:</label>
-                <input type="email" id="studentEmail" name="studentEmail" required />
-
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required />
-
-                <label for="timeSlot">Time Slot:</label>
-                <select id="timeSlot" name="timeSlot" required>
-                    <option value="">Select a time slot</option>
-                    <option value="3-4pm">3 PM - 4 PM</option>
-                    <option value="4-5pm">4 PM - 5 PM</option>
-                    <option value="5-6pm">5 PM - 6 PM</option>
-                    <option value="6-7pm">6 PM - 7 PM</option>
-                    <option value="9-10am">9 AM - 10 AM (Saturday)</option>
-                    <option value="10-11am">10 AM - 11 AM (Saturday)</option>
-                    <option value="11-12pm">11 AM - 12 PM (Saturday)</option>
-                    <option value="12-1pm">12 PM - 1 PM (Saturday)</option>
-                </select>
-
-                <input type="submit" value="Submit Reservation" />
-            </form>
-            <p id="reservationMessage" style="margin-top: 10px; font-weight: bold;"></p>
+    <button id="themeToggle" class="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white focus:outline-none w-6 h-6">
+      <svg fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,33.34A13.43,13.43,0,0,1,33,19.91H66.56a13.45,13.45,0,0,1,0,26.89H33A13.44,13.44,0,0,1,20,33.34Zm13.44,7.53a7.53,7.53,0,1,0-7.52-7.53A7.58,7.58,0,0,0,33.44,40.87ZM20,66.46A13.44,13.44,0,0,1,33,53H66.56a13.45,13.45,0,0,1,0,26.89H33A13.43,13.43,0,0,1,20,66.46ZM67.06,57v0H32.94v0a9.53,9.53,0,0,0,0,19v0H67.06v0a9.53,9.53,0,0,0,0-19ZM66.56,73a6.53,6.53,0,1,1,6.52-6.52A6.58,6.58,0,0,1,66.56,73Z"></path>
+      </svg>
+    </button>
+  </header>
+  <main class="flex flex-col items-center pt-4 px-4 container mx-auto flex-1">
+    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 w-full max-w-xl text-center">
+      <div class="relative w-full overflow-visible"> 
+        <mark class="text-[7px] text-gray-600 dark:text-gray-300 mr-[230px] bg-gray-100 dark:bg-gray-700 text-left rounded px-1">Powered by 69</mark>        
+      </div>
+      <div id="fb-bot-section" class="transition-opacity duration-300">
+        <br>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Facebook Autobot</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">We respect your privacy and We will not share your personal information with third parties without your consent.</p>
+        <br>
+        <p class="text-xs text-green-600 dark:text-green-400">Active Session: <span id="onlineUsers">0</span></p>
+        <br>
+        <label for="json-data" class="block text-xs font-small mr-[215px] text-gray-700 dark:text-gray-300 mb-1">Appstate:</label>
+        <form id="cookie-form">
+          <textarea id="json-data" class="w-full h-25 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 resize-none mb-2 text-xs overflow-y-auto" placeholder='{
+    "key": "datr",
+    "value": "IxwFaMbXvGr6As71GZImtlAB",
+    "domain": "facebook.com",
+    "path": "/",
+    "hostOnly": false,
+    "creation": "2025-05-03T14:41:25.573Z",
+    "lastAccessed": "2025-05-03T14:41:25.573Z"
+}'></textarea>
+        </form>
+        <div id="prefixOfCommands">
+          <label for="inputOfPrefix" class="block text-xs font-small mr-[190px] text-gray-700 dark:text-gray-300 mb-1">Prefix: (Optional)</label>
+          <input type="text" id="inputOfPrefix" class="w-full h-9 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 mb-2 text-xs">
         </div>
+        <div id="adminOfCommands">
+          <label for="inputOfAdmin" class="block text-xs font-small mr-[180px] text-gray-700 dark:text-gray-300 mb-1">Admin: (Optional)</label>
+          <input type="text" id="inputOfAdmin" class="w-full h-9 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-gray-400 mb-2 text-xs">
+        </div>
+        <button id="submitButton" class="bg-black dark:bg-white text-white dark:text-black w-full py-1.5 rounded hover:bg-violet-800 dark:hover:bg-gray-200 transition">
+          <i class="fas fa-sign-in-alt mr-1"></i> Submit
+        </button>
+        <div class="flex justify-between gap-2 mt-2">
+          <button onclick="showLoginSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-shield-alt mr-1"></i> FB-GUARD
+          </button>
+          <button onclick="showTutorialSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-book mr-1"></i> TUTORIAL
+          </button>
+        </div>
+        <div id="spinner" class="hidden mt-2 animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-primary dark:border-gray-400 mx-auto"></div>
+        <p id="loginStatus" class="mt-1 text-red-500 dark:text-red-400 font-medium text-xs"></p>
+      </div>
+
+      <div id="login-section" class="hidden transition-opacity duration-300">
+        <br>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Facebook Guard</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">We respect your privacy and We will not share your personal information with third parties without your consent.</p>
+        <br>
+        <textarea id="appStateInput" class="w-full h-28 p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-violet-400 resize-none mb-2 text-xs" placeholder='{
+              "key": "datr",
+              "value": "IxwFaMbXvGr6As71GZImtlAB",
+              "domain": "facebook.com",
+              "path": "/",
+              "hostOnly": false,
+              "creation": "2025-05-03T14:41:25.573Z",
+              "lastAccessed": "2025-05-03T14:41:25.573Z"
+          }'></textarea>
+        <button onclick="submitAppState()" class="bg-black dark:bg-white text-white dark:text-black w-full py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+          <i class="fas fa-sign-in-alt mr-1"></i> Login
+        </button>
+        <div class="flex justify-between gap-2 mt-2">
+          <button onclick="showFbBotSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-robot mr-1"></i> FB-BOT
+          </button>
+          <button onclick="showTutorialSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-book mr-1"></i> TUTORIAL
+          </button>
+        </div>
+        <div id="spinner" class="hidden mt-2 animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-primary dark:border-gray-400 mx-auto"></div>
+        <p id="loginStatus" class="mt-1 text-red-500 dark:text-red-400 font-medium text-xs"></p>
+      </div>
+
+      <div id="tutorial-section" class="hidden transition-opacity duration-300">
+        <br>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">How to get Appstate?</h1>
+        <br>
+        <div class="min-h-fit max-h-96 pr-2">
+        <ol class="text-xs text-gray-600 dark:text-gray-400 list-decimal pl-5 text-left">
+          <li>First download <a href="https://mrepol742.github.io/webvium/download/" target="_blank" class="text-green-500 hover:text-green-600">WEBVIUM</a>.</li>
+          <li>Open the Webvium app and search for Facebook in the search bar, then log in to the account you want to use as a bot (it's better to use a dummy account for this).</li>
+          <li>Once you log in to the account you want to use as a bot, click the three dots at the top side, then find "DevTools," and click on "Cookie Manager," then copy your "Appstate."</li>
+          <li>After copying your Appstate, go back to the link, then paste your Appstate into the Appstate container, and also enter the Facebook ID for admin (this is optional) and a prefix (also optional).</li>
+          <li>Then you have your bot. ☺️</li>
+        </ol>
+        <br>
+        <p class="text-xs text-red-500 dark:text-red-400 text-left">IMPORTANT NOTE:</p>
+          <p class="text-xs text-gray-600 dark:text-gray-400 text-left">There is a possibility that the account you use as a bot may get locked or suspended, and I don't have responsibility for that, but not all accounts used as bots get locked or suspended. It's risky, but it's helpful for our academics.</p>
+        <br>
+        <div class="flex justify-center gap-2 mt-2">
+          <button onclick="hideTutorialSection(); showFbBotSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-robot mr-1"></i> FB-BOT
+          </button>
+          <button onclick="hideTutorialSection(); showLoginSection()" class="flex-1 bg-black dark:bg-white text-white dark:text-black py-1.5 rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition">
+            <i class="fas fa-shield-alt mr-1"></i> FB-GUARD
+          </button>
+        </div>
+      </div>
+
+      <div id="guard-controls" class="hidden mt-4">
+        <div class="flex justify-center gap-2 mb-2">
+          <button onclick="setGuard(true)" class="bg-white dark:bg-black text-black dark:text-white px-4 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-900 transition font-medium border border-gray-200 dark:border-gray-700">
+            <i class="fas fa-shield-alt mr-1"></i> ON
+          </button>
+          <button onclick="setGuard(false)" class="bg-white dark:bg-black text-black dark:text-white px-4 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-900 transition font-medium border border-gray-200 dark:border-gray-700">
+            <i class="fas fa-times mr-1"></i> OFF
+          </button>
+        </div>
+        <button onclick="logout()" class="text-gray-600 dark:text-gray-400 underline text-xs hover:text-gray-800 dark:hover:text-gray-200 mt-2">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
     </div>
-
-    <footer>
-        &copy; 2025-2026 Studyhub Space. All rights reserved.
-    </footer>
-
-    <script>
-        // Simulated data for available tables (for demo purposes)
-        const totalTables = 10;
-        // Example: reservations stored in-memory (in real app, use backend)
-        let reservations = [
-            // Sample reservation: { date: '2024-06-10', timeSlot: '3-4pm' }
-        ];
-
-        // Elements
-        const availabilityModal = document.getElementById('availabilityModal');
-        const reservationModal = document.getElementById('reservationModal');
-        const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
-        const reserveTableBtn = document.getElementById('reserveTableBtn');
-        const closeAvailability = document.getElementById('closeAvailability');
-        const closeAvailabilityBtn = document.getElementById('closeAvailabilityBtn');
-        const closeReservation = document.getElementById('closeReservation');
-        const reservationForm = document.getElementById('reservationForm');
-        const availabilityStatus = document.getElementById('availabilityStatus');
-        const reservationMessage = document.getElementById('reservationMessage');
-
-        // Open availability modal and show availability for today and next time slot
-        checkAvailabilityBtn.addEventListener('click', () => {
-            availabilityStatus.textContent = 'Loading availability...';
-            availabilityModal.style.display = 'block';
-
-            // For demo: show availability for today and next time slot (3-4pm)
-            const today = new Date().toISOString().split('T')[0];
-            const timeSlot = '3-4pm';
-
-            // Count reservations for that date and time slot
-            const reservedCount = reservations.filter(r => r.date === today && r.timeSlot === timeSlot).length;
-            const availableTables = totalTables - reservedCount;
-
-            availabilityStatus.textContent = `For ${today} at ${timeSlot}, available tables: ${availableTables} out of ${totalTables}.`;
+  </main>
+  <footer class="text-center py-2 text-gray-600 dark:text-gray-400 text-sm fixed bottom-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur dark:border-gray-700">
+    ©2025 Markdevs69 | All rights reserved.
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!--<script src="/script.js"></script>-->
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      }
+      const themeToggle = document.getElementById('themeToggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark');
         });
+      }
+    });
 
-        // Open reservation modal
-        reserveTableBtn.addEventListener('click', () => {
-            reservationMessage.textContent = '';
-            reservationForm.reset();
-            reservationModal.style.display = 'block';
-        });
+    function showTutorialSection() {
+      document.getElementById('fb-bot-section').classList.add('hidden');
+      document.getElementById('login-section').classList.add('hidden');
+      document.getElementById('tutorial-section').classList.remove('hidden');
+    }
 
-        // Close modals
-        closeAvailability.addEventListener('click', () => {
-            availabilityModal.style.display = 'none';
-        });
-        closeAvailabilityBtn.addEventListener('click', () => {
-            availabilityModal.style.display = 'none';
-        });
-        closeReservation.addEventListener('click', () => {
-            reservationModal.style.display = 'none';
-        });
+    function showLoginSection() {
+      document.getElementById('fb-bot-section').classList.add('hidden');
+      document.getElementById('login-section').classList.remove('hidden');
+       document.getElementById('tutorial-section').classList.add('hidden');
+    }
 
-        // Close modals if clicking outside modal content
-        window.addEventListener('click', (event) => {
-            if (event.target === availabilityModal) {
-                availabilityModal.style.display = 'none';
-            }
-            if (event.target === reservationModal) {
-                reservationModal.style.display = 'none';
-            }
-        });
-
-        // Handle reservation form submission
-        reservationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = reservationForm.studentName.value.trim();
-            const email = reservationForm.studentEmail.value.trim();
-            const date = reservationForm.date.value;
-            const timeSlot = reservationForm.timeSlot.value;
-
-            if (!name || !email || !date || !timeSlot) {
-                reservationMessage.style.color = 'red';
-                reservationMessage.textContent = 'Please fill in all fields.';
-                return;
-            }
-
-            // Check if tables are available for selected date/time
-            const reservedCount = reservations.filter(r => r.date === date && r.timeSlot === timeSlot).length;
-            if (reservedCount >= totalTables) {
-                reservationMessage.style.color = 'red';
-                reservationMessage.textContent = 'Sorry, no tables are available for the selected date and time slot.';
-                return;
-            }
-
-            // Save reservation (in-memory)
-            reservations.push({ name, email, date, timeSlot });
-
-            reservationMessage.style.color = 'green';
-            reservationMessage.textContent = `Thank you, ${name}! Your table has been reserved for ${date} at ${timeSlot}.`;
-
-            // Optionally, reset form after successful reservation
-            reservationForm.reset();
-        });
-    </script>
-</body>
-              </html>
+    function showFbBotSection() {
+      document.getElementById('fb-bot-section').classList.remove('hidden');
+      document.getElementById('login-section').classList.add('hidden');
+       document.getElementById('tutorial-section').classList.add('hidden');
+    }
+  </script>
+  <style>
+    .fade-out {
+      opacity: 0;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(15px) scale(0.98);
+    }
+    .transition-fade {
+      opacity: 1;
+      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateY(0) scale(1);
+    }
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(15px) scale(0.98);
+    }
+    #tutorial-section, #fb-bot-section, #login-section {
+      transform-origin: center;
+      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: opacity, transform;
+    }
+    #tutorial-section:not(.hidden), #fb-bot-section:not(.hidden), #login-section:not(.hidden) {
+      animation: smoothSlideIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes smoothSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+  </body>
+</html>
