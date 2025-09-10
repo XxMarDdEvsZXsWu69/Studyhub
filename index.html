@@ -56,12 +56,12 @@
   <main class="flex flex-col items-center pt-8 px-4 container mx-auto flex-1">
     <div id="fb-bot-section" class="transition-opacity duration-300 text-center">
         <br>
-        <h1 class="text-xl font-bold mb-3 text-black dark:text-white">Let's go ride!</h1>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Your safety is our priority.</p>
+        <h1 class="text-xl font-bold mb-3 text-black dark:text-white text-animate">Let's go ride!</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400 text-animate">Your safety is our priority.</p>
         <br>
     </div>
     <div class="w-full max-w-4xl">
-      <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-white">Available Service</h1>
+      <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-white text-animate">Available Service</h1>
       
       <!-- Transportation Options Grid -->
       <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8 max-w-2xl mx-auto fade-in-grid">
@@ -326,6 +326,24 @@ document.addEventListener("DOMContentLoaded", function() {
       
       .ride-card:hover {
         transform: scale(1.02);
+      }
+    }
+    
+    /* Text animations */
+    .text-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: textFadeIn 1.2s ease-out forwards;
+    }
+    
+    @keyframes textFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
     
