@@ -94,8 +94,8 @@
             <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-300 dark:bg-yellow-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
               <i class="fas fa-taxi text-2xl md:text-3xl text-yellow-800 dark:text-yellow-200"></i>
             </div>
-            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">Taxi Cab</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Hassle-free rides</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">under development</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">no comment!</p>
           </div>
         </div>
 
@@ -105,8 +105,8 @@
             <div class="w-16 h-16 md:w-20 md:h-20 bg-purple-300 dark:bg-purple-600 rounded-full flex items-center justify-center mb-3 md:mb-4 icon-animate">
               <i class="fas fa-car-side text-2xl md:text-3xl text-purple-800 dark:text-purple-200"></i>
             </div>
-            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">Super Taxi</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">Next-gen service</p>
+            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-1 md:mb-2">under development</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">no comment</p>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       }
 
-      // Synchronized grid entrance animations
+      // Enhanced grid entrance animations
       const gridItems = document.querySelectorAll('.grid-item');
       gridItems.forEach((item, index) => {
         item.style.opacity = '0';
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
           item.style.opacity = '1';
           item.style.transform = 'scale(1) translateY(0) rotateX(0deg)';
           item.style.filter = 'blur(0px)';
-        }, 0);
+        }, index * 200);
       });
     });
 
@@ -182,8 +182,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function selectRide(rideType) {
       const ride = rides[rideType];
       
-      // Show under development message
-      alert('🚧 Under Development 🚧\n\nThis feature is currently under development.\nPlease check back soon!');
+      // Show developing message
+      alert('⚙️ Developing ⚙️\n\nThis feature is currently developing.\nPlease check back soon!');
     }
 
   </script>
