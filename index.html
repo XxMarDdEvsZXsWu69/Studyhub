@@ -148,59 +148,213 @@ document.addEventListener("DOMContentLoaded", function() {
           document.documentElement.classList.toggle('dark');
         });
       }
+
+      // Add entrance animation to ride cards
+      const rideCards = document.querySelectorAll('.ride-card');
+      rideCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 150);
+      });
     });
 
-    function showTutorialSection() {
-      document.getElementById('fb-bot-section').classList.add('hidden');
-      document.getElementById('login-section').classList.add('hidden');
-      document.getElementById('tutorial-section').classList.remove('hidden');
+    // Ride data
+    const rides = {
+      'mc-taxi': {
+        title: 'MC Taxi',
+        description: 'Beat the traffic on a motorcycle',
+        icon: 'fas fa-motorcycle',
+        color: 'bg-blue-300 dark:bg-blue-600',
+        textColor: 'text-blue-800 dark:text-blue-200'
+      },
+      'car': {
+        title: 'Car',
+        description: 'Travel in style and comfort via private car',
+        icon: 'fas fa-car',
+        color: 'bg-green-300 dark:bg-green-600',
+        textColor: 'text-green-800 dark:text-green-200'
+      },
+      'taxi-cab': {
+        title: 'Taxi Cab',
+        description: 'Hassle-free metered taxi cab rides',
+        icon: 'fas fa-taxi',
+        color: 'bg-yellow-300 dark:bg-yellow-600',
+        textColor: 'text-yellow-800 dark:text-yellow-200'
+      },
+      'super-taxi': {
+        title: 'Super Taxi',
+        description: 'Next-gen taxi service at regular metered rates',
+        icon: 'fas fa-car-side',
+        color: 'bg-purple-300 dark:bg-purple-600',
+        textColor: 'text-purple-800 dark:text-purple-200'
+      }
+    };
+
+    function selectRide(rideType) {
+      const ride = rides[rideType];
+      const modal = document.getElementById('bookingModal');
+      const modalContent = modal.querySelector('.modal-content');
+      
+      // Update modal content
+      document.getElementById('selectedIcon').className = `w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${ride.color}`;
+      document.getElementById('selectedIcon').innerHTML = `<i class="${ride.icon} text-2xl ${ride.textColor}"></i>`;
+      document.getElementById('selectedTitle').textContent = ride.title;
+      document.getElementById('selectedDescription').textContent = ride.description;
+      
+      // Show modal with animation
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      
+      // Animate modal appearance
+      setTimeout(() => {
+        modalContent.style.transform = 'scale(1)';
+        modalContent.style.opacity = '1';
+      }, 10);
     }
 
-    function showLoginSection() {
-      document.getElementById('fb-bot-section').classList.add('hidden');
-      document.getElementById('login-section').classList.remove('hidden');
-       document.getElementById('tutorial-section').classList.add('hidden');
+    function closeModal() {
+      const modal = document.getElementById('bookingModal');
+      const modalContent = modal.querySelector('.modal-content');
+      
+      // Animate modal disappearance
+      modalContent.style.transform = 'scale(0.95)';
+      modalContent.style.opacity = '0';
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
     }
 
-    function showFbBotSection() {
-      document.getElementById('fb-bot-section').classList.remove('hidden');
-      document.getElementById('login-section').classList.add('hidden');
-       document.getElementById('tutorial-section').classList.add('hidden');
+    function bookRide() {
+      // Simple booking confirmation
+      alert('Ride booked successfully! A driver will be assigned shortly.');
+      closeModal();
     }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(event) {
+      const modal = document.getElementById('bookingModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
   </script>
   <style>
-    .fade-out {
-      opacity: 0;
-      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateY(15px) scale(0.98);
+    /* Card animations */
+    .ride-card {
+      position: relative;
+      overflow: hidden;
     }
-    .transition-fade {
-      opacity: 1;
-      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      transform: translateY(0) scale(1);
+    
+    .ride-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s ease;
     }
-    .hidden {
-      opacity: 0;
-      pointer-events: none;
-      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateY(15px) scale(0.98);
+    
+    .ride-card:hover::before {
+      left: 100%;
     }
-    #tutorial-section, #fb-bot-section, #login-section {
-      transform-origin: center;
-      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      will-change: opacity, transform;
+    
+    .icon-animate {
+      transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     }
-    #tutorial-section:not(.hidden), #fb-bot-section:not(.hidden), #login-section:not(.hidden) {
-      animation: smoothSlideIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    .ride-card:hover .icon-animate {
+      transform: scale(1.1) rotateY(10deg);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
-    @keyframes smoothSlideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(15px) scale(0.98);
+    
+    /* Pulse animation for icons */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
       }
-      100% {
+      50% {
+        box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
+      }
+    }
+    
+    .ride-card:nth-child(1) .icon-animate {
+      animation: pulse-glow 3s infinite;
+    }
+    
+    .ride-card:nth-child(2) .icon-animate {
+      animation: pulse-glow 3s infinite 0.5s;
+    }
+    
+    .ride-card:nth-child(3) .icon-animate {
+      animation: pulse-glow 3s infinite 1s;
+    }
+    
+    .ride-card:nth-child(4) .icon-animate {
+      animation: pulse-glow 3s infinite 1.5s;
+    }
+    
+    /* Modal animations */
+    .modal-overlay {
+      backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    
+    .modal-content {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    /* Button hover effects */
+    .ride-card {
+      background-size: 200% 200%;
+      animation: gradient-shift 4s ease infinite;
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .ride-card:hover {
+      animation: float 2s ease-in-out infinite;
+    }
+    
+    /* Responsive grid improvements */
+    @media (max-width: 768px) {
+      .ride-card {
+        transform: scale(1);
+      }
+      
+      .ride-card:hover {
+        transform: scale(1.02);
+      }
+    }
+    
+    /* Smooth entrance animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
   </style>
